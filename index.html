@@ -5,219 +5,265 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>흥길마당 - 전통 연희로 여는 흥의 무드</title>
     <style>
-        /* 기본 폰트 및 다크 무드 세팅 */
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Navam&family=Noto+Serif+KR:wght@300;400;700&family=Noto+Sans+KR:wght@300;400;700&display=swap');
         
+        /* 전체 분위기: 전통 한지의 깊고 은은한 다크 무드 */
         body {
-            background-color: #121212;
-            color: #ffffff;
+            background-color: #0d0d0c;
+            color: #f5f2ed;
             font-family: 'Noto Sans KR', sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            letter-spacing: -0.5px;
         }
 
-        /* 헤더 / 상단 바 */
+        h1, h2, h3, .logo {
+            font-family: 'Noto Serif KR', serif;
+        }
+
+        /* 상단 네비게이션 헤더 */
         header {
-            padding: 20px 40px;
+            padding: 25px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #222;
+            border-bottom: 1px solid #1f1d1a;
+            background-color: rgba(13, 13, 12, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
         }
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
-            color: #ffffff;
-            letter-spacing: 2px;
+            color: #e5dfd3;
+            letter-spacing: 3px;
         }
 
-        /* 메인 비주얼 (인트로) */
+        /* 메인 비주얼 영역: 깊이감 있는 붓글씨 감성 톤 */
         .hero-section {
-            padding: 100px 20px;
+            padding: 140px 20px;
             text-align: center;
-            background: linear-gradient(180deg, #1a1a1a 0%, #121212 100%);
+            background: radial-gradient(circle at center, #241821 0%, #0d0d0c 100%);
+            position: relative;
+        }
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 1px;
+            background-color: #bd599d;
         }
         .hero-section h1 {
-            color: #bd599d; /* 시그니처 바이올렛 */
-            font-size: 3.5rem;
-            margin: 0 0 15px 0;
+            color: #e5dfd3;
+            font-size: 4rem;
+            margin: 0 0 20px 0;
             font-weight: 700;
+            letter-spacing: 4px;
         }
         .hero-section p {
-            color: #aaaaaa;
+            color: #b0a99f;
             font-size: 1.2rem;
-            margin-bottom: 35px;
+            margin-bottom: 40px;
+            font-weight: 300;
+            line-height: 1.6;
         }
         .btn-insta {
             display: inline-block;
-            padding: 12px 30px;
-            background-color: #461d43;
-            color: white;
+            padding: 14px 35px;
+            background-color: transparent;
+            color: #e5dfd3;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 30px;
+            font-size: 0.95rem;
+            border-radius: 0px;
             border: 1px solid #bd599d;
-            transition: 0.3s;
+            transition: all 0.4s ease;
+            letter-spacing: 1px;
         }
         .btn-insta:hover {
-            background-color: #bd599d;
-            box-shadow: 0 0 15px rgba(189, 89, 157, 0.4);
+            background-color: #461d43;
+            border-color: #e5dfd3;
+            box-shadow: 0 0 20px rgba(189, 89, 157, 0.3);
+            transform: translateY(-2px);
         }
 
-        /* 컨테이너 공통 */
+        /* 메인 콘텐츠 컨테이너 */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 80px 20px;
         }
+        
+        /* 분위기 있는 섹션 타이틀 */
         .section-title {
-            font-size: 2rem;
-            color: #ffffff;
-            border-left: 4px solid #bd599d;
-            padding-left: 15px;
-            margin-bottom: 40px;
+            font-size: 2.2rem;
+            color: #e5dfd3;
+            font-weight: 700;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::bottom {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background-color: #bd599d;
+            margin-top: 10px;
         }
 
-        /* 브랜드 소개 섹션 */
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #cccccc;
-            max-width: 800px;
-        }
-
-        /* 카드뉴스 아카이브 (인스타 피드 스타일 그리드) */
+        /* 인스타그램 감성 1:1 비율 그리드 레이아웃 */
         .archive-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 35px;
         }
         .archive-item {
-            background-color: #1e1e1e;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #2d2d2d;
-            transition: transform 0.3s, border-color 0.3s;
+            background-color: #141413;
+            border: 1px solid #24221f;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
         }
+        
+        /* 마우스를 올렸을 때 분위기 있는 조명 효과 */
         .archive-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
             border-color: #bd599d;
+            box-shadow: 0 12px 30px rgba(70, 29, 67, 0.2);
         }
-        /* 카드뉴스 임시 썸네일 박스 */
+
+        /* 인스타 피드 느낌의 완벽한 정형 정방형(1:1) 박스 */
         .thumbnail-box {
             width: 100%;
             aspect-ratio: 1 / 1;
-            background-color: #2a2a2a;
+            background-color: #1c1a17;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: #555555;
-            font-weight: bold;
-            font-size: 1.2rem;
-            border-bottom: 1px solid #2d2d2d;
-            background-size: cover;
-            background-position: center;
+            border-bottom: 1px solid #24221f;
+            position: relative;
+            overflow: hidden;
         }
+        
+        /* 인스타 피드의 일러스트 글자 무드를 재현한 폰트 스타일 */
+        .thumbnail-title-bg {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            z-index: 2;
+        }
+
+        /* 텍스트 상세 영역 */
         .item-info {
-            padding: 20px;
+            padding: 25px;
         }
         .item-tag {
             font-size: 0.8rem;
             color: #bd599d;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 8px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            display: inline-block;
+            border: 1px solid rgba(189, 89, 157, 0.3);
+            padding: 2px 8px;
         }
         .item-title {
-            font-size: 1.2rem;
-            margin: 0 0 10px 0;
+            font-size: 1.3rem;
+            margin: 0 0 12px 0;
             font-weight: 700;
-            color: #ffffff;
+            color: #f5f2ed;
+            line-height: 1.4;
         }
         .item-desc {
             font-size: 0.95rem;
-            color: #999999;
+            color: #9c968d;
             margin: 0;
-            line-height: 1.5;
+            line-height: 1.6;
+            font-weight: 300;
         }
 
-        /* 푸터 */
+        /* 하단 정보 */
         footer {
             text-align: center;
-            padding: 40px 20px;
-            color: #666666;
-            font-size: 0.9rem;
-            border-top: 1px solid #222;
-            margin-top: 60px;
+            padding: 50px 20px;
+            color: #54504a;
+            font-size: 0.85rem;
+            border-top: 1px solid #1f1d1a;
+            margin-top: 100px;
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
-    <!-- 상단 헤더 영역 -->
+    <!-- 상단 헤더 -->
     <header>
         <div class="logo">흥길마당</div>
     </header>
 
-    <!-- 메인 대문 영역 -->
+    <!-- 메인 대문 비주얼 -->
     <section class="hero-section">
         <h1>흥길마당</h1>
-        <p>전통 연희로 여는 오늘의 흥과 무드</p>
-        <a class="btn-insta" href="https://www.instagram.com/heunggil_madang/" target="_blank">인스타그램 피드 방문하기</a>
+        <p>우리의 전통 연희, 국악, 농악, 사물놀이의 신명을<br>오늘날의 감각적인 무드로 기록합니다.</p>
+        <a class="btn-insta" href="https://www.instagram.com/heunggil_madang/" target="_blank">INSTAGRAM</a>
     </section>
 
-    <!-- 브랜드 소개 섹션 -->
-    <section class="container">
-        <div class="section-title">ABOUT</div>
-        <div class="about-text">
-            <p><strong>흥길마당</strong>은 우리의 소중한 전통 자산인 국악, 농악, 사물놀이, 그리고 전통 연희의 다채로운 순간들을 오늘날의 감각적인 비주얼과 무드로 재해석하여 기록하고 공유하는 아카이빙 플랫폼입니다.</p>
-            <p>무겁고 거리감이 느껴지던 전통 예술을 트렌디한 카드뉴스와 스냅 콘텐츠로 풀어내어, 더 많은 대중이 우리 고유의 '흥'을 일상 속에서 가깝고 매력적으로 즐길 수 있도록 돕습니다.</p>
-        </div>
-    </section>
-
-    <!-- 아카이브 섹션 (카드뉴스 모음) -->
+    <!-- 아카이브 섹션 -->
     <section class="container">
         <div class="section-title">ARCHIVE</div>
         <div class="archive-grid">
             
-            <!-- 카드뉴스 1 -->
+            <!-- 1번 목록: 현장 스케치 -->
             <div class="archive-item">
-                <!-- 나중에 진짜 이미지 주소가 생기면 background-image: url('주소') 형태로 넣을 수 있습니다 -->
-                <div class="thumbnail-box" style="background-color: #3a2235; color: #bd599d;">사물놀이</div>
+                <div class="thumbnail-box" style="background: linear-gradient(135deg, #2b222a 0%, #141113 100%);">
+                    <div class="thumbnail-title-bg" style="color: #e5dfd3; opacity: 0.85;">현장 스케치</div>
+                </div>
                 <div class="item-info">
-                    <div class="item-tag">연희 정보</div>
-                    <div class="item-title">사물놀이 악기 4가지 파헤치기</div>
-                    <p class="item-desc">쇠, 징, 장구, 북에 담긴 우주의 소리와 각 악기가 가진 고유의 매력을 알아봅니다.</p>
+                    <div class="item-tag">SCENERY</div>
+                    <div class="item-title">연희가 펼쳐지는 생생한 순간</div>
+                    <p class="item-desc">전국의 축제와 무대 위, 땀방울과 신명이 가득한 사물놀이와 농악의 현장을 사진과 글로 생생하게 담아냅니다.</p>
                 </div>
             </div>
 
-            <!-- 카드뉴스 2 -->
+            <!-- 2번 목록: 소식 & 홍보 -->
             <div class="archive-item">
-                <div class="thumbnail-box" style="background-color: #25223a; color: #7f79bd;">농악</div>
+                <div class="thumbnail-box" style="background: linear-gradient(135deg, #1c1c24 0%, #0f1014 100%);">
+                    <div class="thumbnail-title-bg" style="color: #bd599d;">소식 & 홍보</div>
+                </div>
                 <div class="item-info">
-                    <div class="item-tag">문화 매거진</div>
-                    <div class="item-title">농악이란 무엇인가?</div>
-                    <p class="item-desc">단순한 풍악을 넘어 공동체의 신명과 화합을 이끌어내던 우리 유산의 정수.</p>
+                    <div class="item-tag">NOTICE</div>
+                    <div class="item-title">흥길마당이 전하는 새로운 이야기</div>
+                    <p class="item-desc">흥길마당의 키링 디자인 투표 이벤트, 전통 공연 소식 및 다채로운 소통 프로젝트를 가장 빠르게 공유합니다.</p>
                 </div>
             </div>
 
-            <!-- 카드뉴스 3 -->
+            <!-- 3번 목록: 연희 도감 -->
             <div class="archive-item">
-                <div class="thumbnail-box" style="background-color: #223a28; color: #79bd88;">공연 리뷰</div>
+                <div class="thumbnail-box" style="background: linear-gradient(135deg, #1f2421 0%, #101411 100%);">
+                    <div class="thumbnail-title-bg" style="color: #a19887;">연희 도감</div>
+                </div>
                 <div class="item-info">
-                    <div class="item-tag">국악 라이프</div>
-                    <div class="item-title">국악 공연 처음 보러 간 날 가이드</div>
-                    <p class="item-desc">초보자도 당황하지 않고 추임새 넣으며 무대를 200% 함께 즐기는 꿀팁 모음.</p>
+                    <div class="item-tag">KNOWLEDGE</div>
+                    <div class="item-title">차곡차곡 쌓아가는 전통 지식</div>
+                    <p class="item-desc">"농악이란 무엇인가?", "추임새 함께 즐기기"처럼 어렵게 느껴지던 우리 전통 예술을 쉽고 트렌디하게 정주행하는 공간입니다.</p>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- 푸터 영역 -->
+    <!-- 푸터 -->
     <footer>
-        &copy; 2026 흥길마당. All 코딩 웹사이트 제작 완료.
+        &copy; 2026 HEUNGGIL MADANG. ALL RIGHTS RESERVED.
     </footer>
 
 </body>
